@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-10">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Fuentes</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Mis Fuentes de Ingreso</li>
+                </ol>
+            </nav>
+        </div>
+
+        <div class="col-md-2">
+            <a href="{% url 'add_source' %}" class="btn btn-primary">Agregar Fuente</a>
+        </div>
+        </div>
+
+    </div>
+    <br>
+
+    <div class="container">
+        {% include 'partials/_messages.html' %}
+        {% if fuentes.count %}
+        <div class="row">
+
+            <div class="col order-last">
+                <input type="text" class="form-control" id="searchField" placeholder="Search">
+            </div>
+
+        </div>
+
+        <div class="app-table">
+
+            <table class="table table-stripped table-hover">
+              <thead>
+                <tr>
+                  <th>Nombre Fuente</th>
+
+                  <th></th>
+                </tr>
+              </thead>
+          
+              <tbody>
+                {% for fuente in page_obj%}
+                <tr>
+                  <td>{{fuente.name}}</td>
+
+          
+                  <td>
+                    <a
+                      href="{% url 'delete_source' fuente.id %}"
+                      class="btn btn-danger btn-sm"
+                      >Borrar</a
+                    >
+                  </td>
+                </tr>
+          
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        
+        <div class="table-output">
+            <table class="table table-stripped table-hover">
+                <thead>
+                    <tr>                       
+                        <th>Nombre Fuente</th>
+
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody class="table-body">
+            
+                </tbody>
+
+            </table>
+        </div>
+
+
+        <div class="pagination-container">
+
+            <div class="">
+                Mostrando página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+    
+            </div>
+    
+            <ul class="pagination align-right float-right mr-auto">
+                {% if page_obj.has_previous %}
+                <li {% if page_obj.number == 1 %} class="page-item active" {% endif %}><a class="page-link" href="?page=1">&laquo; 1</a></li>
+                <li class="page-item"> <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a></li>
+                {% endif %}
+          
+                {% if page_obj.has_next %}
+                <li class="page-item"> <a class="page-link" href="?page={{ page_obj.next_page_number }}">Siguiente</a></li>
+                <li class="page-item"> <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages}} &raquo;</a></li>
+                {% endif %}
+    
+            {% endif %}
+
+
+
+
+        </div>
+
+
+    </div>
+</div>
+
+
+<script src="{% static 'js/searchSource.js' %}"></script>
+
+
+</script>
+
+
+{% endblock %}
+

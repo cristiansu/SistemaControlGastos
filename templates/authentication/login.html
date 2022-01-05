@@ -1,0 +1,86 @@
+{% extends 'base_auth.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+    body {
+        background-image: url("{% static 'img/cabeza-grafico.png' %}");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+    }
+    </style>
+
+<div class="row" style="border: none;">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+
+        <div class="card mt-5">
+            <div class="card-body">
+                <div class="card-title py-2">
+                    <div class="form-group" style="text-align: center;">
+                        <h3 style="font-style: italic;">Sistema Control de Gastos</h3>
+                        <img src="{% static 'img/LogoCapacitacionv7.png' %}" width="120" height="120" alt=""/>
+
+                    </div>  
+                    <h4>Login Ingreso Cuenta</h4>
+                </div>
+
+                <form action="{% url 'login' %}" method="post">
+
+                    {% csrf_token %}
+
+                    {% include 'partials/_messages.html' %}
+
+                 
+
+                    <div class="form-group">
+                        <input 
+                        type="text" 
+                        name="username" 
+                        placeholder="Nombre Usuario"
+                        id="usernameField" 
+                        class="form-control form-control-sm"
+                        value="{{fieldValues.username}}"
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <input 
+                        type="password" 
+                        name="password" 
+                        placeholder="Password"
+                        id="passwordField" 
+                        class="form-control form-control-sm" />
+
+                    </div>
+
+                    <input type="submit" value="Login" class="btn btn-block btn-primary submit-btn" />
+
+                </form>
+
+                <div class="container">
+
+                    <span class="text-lead-lead">
+                        No tienes una cuenta? 
+                    </span>
+                    <a href="{% url 'register' %}">Registrar</a>
+                    <br>
+                    <span class="text-lead-lead">
+                        Olvidaste tu contraseña?
+                    </span>
+                    <a href="{% url 'request-password' %}">Restablecer</a>
+    
+                </div>
+        
+            </div>
+         
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+
+<script src="{% static 'js/register.js' %}"></script>
+{% endblock %}

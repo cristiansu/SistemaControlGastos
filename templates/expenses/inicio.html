@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<link href="{% static 'css/inicio.css' %}" rel="stylesheet">
+
+<br>
+<th></th>
+
+
+<div class="container">
+
+    <br>
+    <h1>Instrucciones de Uso</h1>
+    <br>
+    <div class="form-group">
+
+        <div class="row">
+    
+            <div class="col-md-12">
+    
+                <ul class="list-group">
+                    <li class="list-group-item">Paso 1: Selecciona la moneda en SETTINGS</li>
+                    <li class="list-group-item list-group-item-primary">Paso 2: Crea tus categorías de Gasto en SETTINGS</li>
+                    <li class="list-group-item list-group-item-secondary">Paso 3: Crea tus fuentes de Ingreso en SETTINGS</li>
+                    <li class="list-group-item list-group-item-success">Paso 4: Ya puedes ingresar tus Gastos</li>
+                    <li class="list-group-item list-group-item-danger">Paso 5: Ya puedes ingresar tus Ingresos</li>
+                    <li class="list-group-item list-group-item-warning">Paso 6: Ya puedes ver tus gráficos de Gasto</li>
+                    <li class="list-group-item list-group-item-info">Paso 7: Ya puedes ver tus gráficos de Ingreso</li>
+                  </ul>
+    
+            </div>
+    
+        </div>
+    
+    </div>
+
+
+</div>
+
+
+<br><br><br><br>
+
+<div class="container mt-8" style="text-align: center;">
+
+    <!--<img src="{% static 'img/billete-monedas.png' %}" class="responsive" alt="Nature"/>-->
+    
+    <img src="{% static 'img/billetera.png' %}" class="responsive" alt="Nature"/>
+
+    <img src="{% static 'img/cabeza-grafico.png' %}" class="responsive" alt="Nature"/>
+</div>
+
+
+
+
+
+
+{% endblock %}
+

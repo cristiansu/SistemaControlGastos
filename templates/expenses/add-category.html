@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Agregar Categoría</h1>
+
+<div class="container mt-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'lista_categorias' %}">Categorías</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Mis Categorias</li>
+        </ol>
+    </nav>
+
+
+<div class="card">
+    <div class="card-body">
+    <form action="{% url 'add_category' %}" method="post">
+        {% include 'partials/_messages.html' %}
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="">Categoría</label>
+            <input type="text" class="form-control form-control-sm" name="category" value="{{ values.category }}">
+        </div>
+
+        <input type="submit" value="Submit" class="btn btn-primary btn-primary-sm">
+    </form>    
+
+    </div>
+ 
+</div>
+
+
+</div>
+
+
+
+{% endblock %}
+

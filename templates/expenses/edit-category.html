@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Editar Categoría</h1>
+
+<div class="container mt-4">
+<div class="row">
+    <div class="col-md-10">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'lista_categorias' %}">Categorías</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Editar Categoría</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="col-md-2">
+        <a href="#" class="btn btn-danger btn-sm">Borrar</a>
+
+    </div>
+</div>
+
+
+<div class="card">
+    <div class="card-body">
+    <form action="{% url 'category_edit' categories.id %}" method="post">
+        {% include 'partials/_messages.html' %}
+        {% csrf_token %}
+
+
+        <div class="form-group">
+            <label for="">Categoría</label>
+            <input type="text" class="form-control form-control-sm" name="category" value="{{ values.category }}">
+        </div>
+
+
+        <input type="submit" value="Save" class="btn btn-primary btn-primary-sm">
+    </form>    
+
+    </div>
+ 
+</div>
+
+
+</div>
+
+
+
+{% endblock %}
+
